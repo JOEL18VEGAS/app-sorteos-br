@@ -51,7 +51,7 @@ export default function Navbar() {
             Rank
           </Link>
           <Link className="text-2xl font-bold text-transparent bg-gradient-to-r bg-clip-text from-indigo-800 via-fuchsia-600 to-pink-300" to="/numeros-confirmados">
-            Numeros Confirmados
+            Numeros confirmados
           </Link>
         </div>
       )}

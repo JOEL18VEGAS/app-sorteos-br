@@ -35,20 +35,14 @@ export default function FormData() {
   const accounts = [
     {
       name: "Nequi",
-      number: "30175353553",
-      description: "Solo transferencias bancarias",
-      important: true,
-    },
-    {
-      name: "Western Union",
-      number: "30175353553",
+      number: "3042602553",
       description: "Solo transferencias bancarias",
       important: true,
     },
     {
       name: "Bancolombia",
-      number: "30175353553",
-      description: "Solo transferencias bancarias",
+      number: "549-049633-75",
+      description: "Solo transferencias bancarias ( Ahorro )",
       important: true
     }
   ];
@@ -73,7 +67,7 @@ export default function FormData() {
       number:whatsapp,
       city:city,
       numbers: selectedNumber,
-      monto: numberToCurrency(tickets * 20000)
+      monto: numberToCurrency(selectedNumber.length * 20000)
     };
     if (selectedFile) {
       try {
@@ -89,7 +83,7 @@ export default function FormData() {
 
         await supabase.from("users").insert([formData]);
       Swal.fire(
-        '¡Gracias por participar en la rifa del iPhone 11 Pro Max!',
+        '¡Gracias por participar en la rifa del iPhone 14 Pro Max!',
         'Hemos recibido tu compra con éxito y tu número de rifa ha sido reservado. Pronto recibirás una notificación por WhatsApp con los detalles de tu participación.',
         'success',
       )
@@ -136,9 +130,9 @@ export default function FormData() {
         <div className="my-4">
           <h3 className="text-black font-bold">DETALLE DE PAGO</h3>
           <p className="text-slate-600 pl-2">
-            {tickets} numeros para la rifa {rifa}
+            {selectedNumber.length} numeros para la rifa {rifa}
           </p>
-          <span className="text-black pl-2">{numberToCurrency(tickets * 20000)}</span>
+          <span className="text-black pl-2">{numberToCurrency(selectedNumber.length * 20000)}</span>
         </div>
 
         <div className="bg-gray-300 h-[0.5px] my-2 "></div>

@@ -71,7 +71,7 @@ export default function SelectNumber() {
         id="second"
         className="md:w-full  text-center md:text-4xl font-bold text-transparent bg-gradient-to-r bg-clip-text from-indigo-800 via-fuchsia-600 to-pink-300 my-10"
       >
-        ¿Cuál Será tu Número Ganador? Elige Ahora
+        ¿Cuál será tu número ganador? elige ahora
       </h1>
 
       <div className="grid grid-cols-4 md:grid md:grid-cols-10 text-white md:h-[50vh] overflow-y-scroll md:px-24  place-items-center gap-4 md:w-[80%]">
@@ -120,7 +120,7 @@ export default function SelectNumber() {
 
         <div className="md:pb-0 pb-12">
         <p className="font-semibold md:text-2xl text-center md:mx-20">
-            Numero De Boletas Seleccionadas: {selectedNumber.length} {tickets !== 0 ? `/ ${tickets}`: "Boletas"}
+            Numero de Boletas seleccionadas: {selectedNumber.length} {tickets !== 0 ? `/ ${tickets}`: "Boletas"}
           </p>
         </div>
 

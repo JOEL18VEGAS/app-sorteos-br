@@ -152,8 +152,7 @@ export default function Home() {
 
         {/* Description */}
         <p className="font-bold">
-          este sorteo se realizará el {dateLottery.day} DE {dateLottery.month}{" "}
-          con la Loteria {dateLottery.lottery}
+          lleguemos a la meta.
         </p>
       </div>
     </>

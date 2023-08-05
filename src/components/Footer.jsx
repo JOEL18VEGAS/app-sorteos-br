@@ -41,16 +41,10 @@ export default function Footer() {
         <div className="md:flex justify-center flex mb-4 md:items-center md:gap-4">
           <img className="md:w-8" src={emailIcon} alt="email" />
           <a href="#" className="font-semibold">
-          info@BR-teamoficial.com
+          brsorteos00@gmail.com
           </a>
         </div>
-        {/* WhatsApp */}
-        <div className="md:flex justify-center flex mb-4 md:items-center md:gap-4">
-          <img className="md:w-8" src={wsIcon} alt="email" />
-          <a href="#" className="font-semibold">
-          +57 301 000 0000
-          </a>
-        </div>
+        
         <p className=" text-center mt-6 font-semibold">
         Sorteos realizados por {owner}
         </p>
