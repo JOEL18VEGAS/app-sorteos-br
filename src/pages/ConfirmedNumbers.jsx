@@ -14,24 +14,45 @@ export default function ConfirmedNumbers() {
   useEffect(() => {
     fetchUsersWithValidation();
   }, []);
-  const fetchUsersWithValidation = async() => {
+  const fetchUsersWithValidation = async () => {
     try {
       // Realiza la consulta a la base de datos
-    let { data: users, error } = await supabase
-    .from('users')
-    .select('*')
-    .eq('validated', true);
-
-  if (error) {
-    throw error;
-  }
-
-  // Ejemplo: Actualizar el estado del componente con los datos obtenidos
-  setData(users);
+      let { data: users, error } = await supabase
+        .from('users')
+        .select('*')
+        .eq('validated', true);
+  
+      if (error) {
+        throw error;
+      }
+  
+      // Filtrar aquellos usuarios cuyo array tenga al menos un número
+      users = users.filter((user) => user.numbers && user.numbers.length > 0);
+  
+      // Crear un objeto para agrupar usuarios por correo electrónico
+      const groupedUsers = {};
+      users.forEach((user) => {
+        if (!groupedUsers[user.correo]) {
+          groupedUsers[user.correo] = user;
+        } else {
+          // Concatenar los números al array existente
+          groupedUsers[user.correo].numbers = [...groupedUsers[user.correo].numbers, ...user.numbers];
+        }
+      });
+  
+      // Convertir el objeto de grupos de usuarios de nuevo a un array
+      const mergedUsers = Object.values(groupedUsers);
+  
+      // Ordenar los usuarios por la longitud del array en orden descendente
+      mergedUsers.sort((a, b) => b.numbers.length - a.numbers.length);
+  
+      // Ejemplo: Actualizar el estado del componente con los datos obtenidos
+      setData(mergedUsers);
     } catch (error) {
       console.error('Error al obtener los usuarios:', error.message);
     }
-  }
+  };
+  
 
   return (
     <div>

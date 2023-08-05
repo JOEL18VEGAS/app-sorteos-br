@@ -21,20 +21,35 @@ export default function Rank() {
 
   async function getCountries() {
     let { data: users, error } = await supabase
-    .from('users')
-    .select("*")
-    .eq('validated', true);
+      .from('users')
+      .select("*")
+      .eq('validated', true);
   
-  // Filtrar aquellos usuarios cuyo array tenga al menos un número
-  users = users.filter((user) => user.numbers && user.numbers.length > 0);
+    // Filtrar aquellos usuarios cuyo array tenga al menos un número
+    users = users.filter((user) => user.numbers && user.numbers.length > 0);
   
-  // Ordenar los usuarios por la longitud del array en orden descendente
-  users.sort((a, b) => b.numbers.length - a.numbers.length);
+    // Crear un objeto para agrupar usuarios por correo electrónico
+    const groupedUsers = {};
+    users.forEach((user) => {
+      if (!groupedUsers[user.correo]) {
+        groupedUsers[user.correo] = user;
+      } else {
+        // Concatenar los números al array existente
+        groupedUsers[user.correo].numbers = [...groupedUsers[user.correo].numbers, ...user.numbers];
+      }
+    });
   
-  // Obtener solo los primeros 5 usuarios con más números en el array
-  const topFiveUsers = users.slice(0, 30);
-    setData(topFiveUsers)
+    // Convertir el objeto de grupos de usuarios de nuevo a un array
+    const mergedUsers = Object.values(groupedUsers);
+  
+    // Ordenar los usuarios por la longitud del array en orden descendente
+    mergedUsers.sort((a, b) => b.numbers.length - a.numbers.length);
+  
+    // Obtener solo los primeros 5 usuarios con más números en el array
+    const topFiveUsers = mergedUsers.slice(0, 5);
+    setData(topFiveUsers);
   }
+  
 
   const numberToCurrency = (number) => {
     return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(number);
