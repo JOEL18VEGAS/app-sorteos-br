@@ -120,7 +120,7 @@ export default function SelectNumber() {
 
         <div className="md:pb-0 pb-12">
         <p className="font-semibold md:text-2xl text-center md:mx-20">
-            Numero de Boletas seleccionadas: {selectedNumber.length} {tickets !== 0 ? `/ ${tickets}`: "Boletas"}
+            Numero de boletas seleccionadas: {selectedNumber.length} {tickets !== 0 ? `/ ${tickets}`: "Boletas"}
           </p>
         </div>
 

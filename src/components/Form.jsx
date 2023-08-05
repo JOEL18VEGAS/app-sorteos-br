@@ -161,7 +161,7 @@ export default function FormData() {
           <input
             className="w-[100%] border-2  px-4 py-4  text-lg "
             type="text"
-            placeholder="Nombre Completo"
+            placeholder="Nombre completo"
             name="full-name"
             required
           />

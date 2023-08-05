@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
         </div>
         <p className="font-semibold md:text-left text-center">
-          © 2023. Derechos Reservados.
+          © 2023. Derechos reservados.
         </p>
       </div>
       {/* Social Links */}
